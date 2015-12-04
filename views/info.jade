@@ -1,0 +1,74 @@
+extends layout
+
+block content
+  
+  .container
+    .row
+      .col-md-6.pull-left
+        .well
+          h1 #{data.nom}
+          br
+          | #{data.description}
+          br
+          | #{data.description_admin}
+          br
+          if(data.status == 0)
+          else if(data.status == 1)
+            | Les secours ont été informés
+            br
+          else if(data.status == 2)
+            | Les secours ont été envoyés
+            br
+          span(id='date', class="date-object") #{data.date}
+        
+      .col-md-6.pull-right
+        .well
+          section#zone_chat
+      
+        form#newMessage(action='/', method='post')
+          .col-md-10.col-sm-10.col-xs-8.pull-left
+            input.form-control(type='text', name='message', id='message', placeholder='Tapez votre message')
+          .col-md-1.col-sm-1.col-xs-1.pull-left
+            .input-group-btn
+              .form-group
+                button.btn.btn-default(type='submit')
+                  | Envoyer
+    
+  script(src='https://cdn.socket.io/socket.io-1.3.7.js')
+  script.
+    var socket = io.connect('http://localhost:3001');
+    var pseudo = prompt('Quel est votre pseudo ?');
+    var room =  !{JSON.stringify(data._id)};
+    
+    socket.emit('nouveau_client', pseudo, room);
+    
+    
+    socket.on('message', function(data) {
+              insereMessage(data.pseudoem, data.message);
+          })
+
+    $('#newMessage').submit(function () {
+                  var message = $('#message').val();
+                  socket.emit('message', message, pseudo, room); // Transmet le message aux autres
+                  insereMessage(pseudo, message);
+                  $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+                  return false; // Permet de bloquer l'envoi "classique" du formulaire
+              });
+              
+    socket.on('nouveau_client', function(pseudo) {
+          $('#zone_chat').append('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+        })
+
+    function insereMessage(pseudoem, message) {
+              $('#zone_chat').append('<p><strong>' + pseudoem + '</strong> :' + message + '</p>');
+          }
+    function inseretexte(texte) {
+              $('#zone_chat').append('<p>' + texte + '</p>');
+          }
+      $('.date-object').each(function (index, value){
+        var months=["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+        var dateString=$('#date').html();
+        dateString=new Date(dateString);
+        dateString= dateString.getDate() + " " + months[dateString.getMonth()] + " " + dateString.getFullYear();
+        $('#date').html(dateString);
+      });

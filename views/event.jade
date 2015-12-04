@@ -1,0 +1,53 @@
+extends layout
+
+block content
+
+  .container
+    h1= title
+    .row
+      .col-md-6.pull-left
+        h3 Voici le(s) événement(s) qui ont été signalés:
+        br
+        -var nb=data.length
+        -var i=0
+        while i<nb
+          br
+          a(href="/info/#{data[i]._id}")
+            .well
+              | #{data[i].nom}
+              br
+              | #{data[i].description}
+              span(id='date-#{i}', class="date-object") #{data[i].date}
+          -i=i+1
+      .col-md-6.pull-left
+        #map
+          link(rel="stylesheet", href='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css')
+          script(src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js')
+          script.
+            $(document).ready(function() {
+              var map = L.map('map').setView([43.46886761482925, 5.361328125], 5);
+              L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              }).addTo(map);
+
+              if(#{data[0].latitude} != 0){
+              L.marker([#{data[0].latitude}, #{data[0].longitude}]).addTo(map).bindPopup("#{data[0].description}").openPopup();
+              }
+              if(#{data[1].latitude} != 0){
+              L.marker([#{data[1].latitude}, #{data[1].longitude}]).addTo(map).bindPopup("#{data[1].description}")              
+              }
+              if(#{data[2].latitude} != 0){
+              L.marker([#{data[2].latitude}, #{data[2].longitude}]).addTo(map).bindPopup("#{data[2].description}")
+              }
+              if(#{data[3].latitude} != 0){
+              L.marker([#{data[3].latitude}, #{data[3].longitude}]).addTo(map).bindPopup("#{data[3].description}")
+              }
+
+              $('.date-object').each(function (index, value){
+              var months=["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+              var dateString=$('#date-'+index).html();
+              dateString=new Date(dateString);
+              dateString=", le " + dateString.getDate() + " " + months[dateString.getMonth()] + " " + dateString.getFullYear();
+              $('#date-'+index).html(dateString);
+              });
+            });

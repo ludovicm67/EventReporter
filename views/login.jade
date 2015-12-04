@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .container
+    h1 Connexion au panneau d'administration
+    br
+    p Connectez-vous à l'aide des identifiants EventReporter (demo : admin/nimda)
+    br
+    form(role='form', action="/login",method="post", style='max-width: 300px;')
+      .form-group
+          input.form-control(type='text', name="username", placeholder="Nom d'utilisateur")
+      .form-group
+        input.form-control(type='password', name="password", placeholder='Mot de passe')
+      button.btn.btn-default(type='submit') Se connecter
+      &nbsp;
+      a(href='/')
+        button.btn.btn-primary(type="button") Annuler

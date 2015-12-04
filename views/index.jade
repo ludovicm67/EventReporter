@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    div(class='container homepage-container')
+      .text-center
+        h3 Vous êtes témoins d'un incident (un incendie, une catastrophe naturelle, un braquage, un attentat, ...), et vous souhaitez prévenir les autres de ces événements? 
+        h2 #{title} est fait pour vous !
+      a(class='btn btn-primary homepage-btn', href='/event') Événements en cours
+      a(class='btn btn-danger homepage-btn', href='/signaler') Signaler un événement

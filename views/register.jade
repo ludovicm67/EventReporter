@@ -1,0 +1,16 @@
+// non dispo. en prod.
+extends layout
+
+block content
+  .container
+    h1 Inscription
+    br
+    form(role='form', action="/register",method="post", style='max-width: 300px;')
+      .form-group
+          input.form-control(type='text', name="username", placeholder="Nom d'utilisateur")
+      .form-group
+        input.form-control(type='password', name="password", placeholder='Mot de passe')
+      button.btn.btn-default(type='submit') S'inscrire
+      &nbsp;
+      a(href='/')
+        button.btn.btn-primary(type="button") Annuler
