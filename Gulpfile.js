@@ -10,6 +10,11 @@ gulp.task("clean", function() {
   return del(["public/**"]);
 });
 
+gulp.task("fonts", function() {
+  return gulp.src("node_modules/bootstrap-sass/assets/fonts/bootstrap/*")
+    .pipe(gulp.dest("public/fonts/bootstrap/"));
+});
+
 gulp.task("vendors-scripts", function() {
   return gulp.src([
       "node_modules/jquery/dist/jquery.js",
@@ -56,4 +61,4 @@ gulp.task("watch", ["build"], function() {
   gulp.watch("assets/scss/**/*", ["sass"]);
 });
 
-gulp.task("build", ["scripts", "vendors-scripts", "sass"]);
+gulp.task("build", ["scripts", "vendors-scripts", "sass", "fonts"]);

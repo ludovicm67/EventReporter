@@ -13,17 +13,29 @@ block content
         while i<nb
           br
           .well
-            | #{data[i].nom}
+            form(role='form', action='/deletedata', method='post', enctype='plain')
+              .form-group
+                input.form-control(type='hidden', name='iddata', value="#{data[i]._id}")
+                button.glyphicon.glyphicon-remove(type='submit', style='float:right; color:red; border: none; background: none; margin: 0px;')
+            strong
+              | #{data[i].nom}
             br
             | #{data[i].description}
             span(id='date-#{i}', class="date-object") #{data[i].date}
             br
             br
             form(role='form', name='form', action='/update_admin', method='post', enctype='plain')
-              input.form-control(type='hidden', name='id_modification', value= data[i]._id)
-              input.form-control(type='text', name='description_admin', placeholder= data[i].description_admin)
-              input.form-control(type='checkbox', name='statut1')
-              input.form-control(type='checkbox', name='statut2')
+              .form-group
+                input(type='hidden', name='id_modification', value= data[i]._id)
+              .form-group
+                label(for='description_admin')  Description admin
+                input(type='text', class='form-control', name='description_admin', value= data[i].description_admin)
+              .form-group  
+                label 
+                  |   Secours informés 
+                  input(type='checkbox', name='statut1')
+                  |   Secours envoyés 
+                  input(type='checkbox', name='statut2')
               button.btn.btn-default(type='submit') Modifier le signalement
           -i=i+1
       .col-md-6.pull-left

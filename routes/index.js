@@ -29,6 +29,17 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/admin');
 });
 
+router.post('/deletedata', function(req, res){
+  if(req.user !== undefined && req.user.username == 'admin'){
+      Event.findByIdAndRemove(req.body.iddata, function (err, data) {
+        res.redirect('/admin')
+      });
+  }
+  else {
+    res.redirect('/');
+  }
+});
+
 router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
