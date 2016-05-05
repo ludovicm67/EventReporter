@@ -18,4 +18,6 @@ Vérifiez ensuite également que vous avez bien une commande `gulp`. Si ce n'est
 
 Une fois que vous avez tous ces prérequis, lancer un simple `npm install`.
 
-Ensuite il faudra lancer la commande `npm run-script build` ou bien tout simplement `gulp build`.
+Ensuite il faudra lancer la commande `npm run-script build` ou bien tout simplement `gulp build` pour générer les fichiers manquants.
+
+Pour lancer l'application, il vous suffira alors plus que de lancer la commande `npm start` et vous rendre sur la page http://localhost:3000 :wink:
