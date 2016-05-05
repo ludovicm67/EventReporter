@@ -17,7 +17,7 @@ block content
               | #{data[i].nom}
               br
               | #{data[i].description}
-              span(id='date-#{i}', class="date-object") #{data[i].date}
+              span(id='date-#{i}').date-object #{data[i].date}
           -i=i+1
       .col-md-6.pull-left
         #map
@@ -34,7 +34,7 @@ block content
               L.marker([#{data[0].latitude}, #{data[0].longitude}]).addTo(map).bindPopup("#{data[0].description}").openPopup();
               }
               if(#{data[1].latitude} != 0){
-              L.marker([#{data[1].latitude}, #{data[1].longitude}]).addTo(map).bindPopup("#{data[1].description}")              
+              L.marker([#{data[1].latitude}, #{data[1].longitude}]).addTo(map).bindPopup("#{data[1].description}")
               }
               if(#{data[2].latitude} != 0){
               L.marker([#{data[2].latitude}, #{data[2].longitude}]).addTo(map).bindPopup("#{data[2].description}")
