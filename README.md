@@ -2,6 +2,8 @@
 
 Voici le projet pour la Nuit de l'info 2015 de l'équipe Elseware (Strasbourg).
 
+Il s'agit d'un gestionnaire d'incidents avec géolocalisation.
+
 Nous avons réussis, avec ce projet, à obtenir la première place pour le défi [Objectif remote work](http://www.nuitdelinfo.com/n2i/defis/16).
 
 Liens utiles :
