@@ -14,4 +14,8 @@ Tout d'abord veillez à avoir les dernières versions de `npm` et `nodejs`.
 
 Ensuite faites en sorte que vous avez une commande `node`. Si ce n'est pas le cas, il suffira simplement de faire un `sudo ln -s /usr/bin/nodejs /usr/bin/node` pour créer un lien symbolique. En appelant la commande `node` cela va appeler la commande `nodejs`.
 
+Vérifiez ensuite également que vous avez bien une commande `gulp`. Si ce n'est pas le cas, lancez simplement la commande `sudo npm install -g gulp` pour l'installer globalement sur votre système.
+
 Une fois que vous avez tous ces prérequis, lancer un simple `npm install`.
+
+Ensuite il faudra lancer la commande `npm run-script build` ou bien tout simplement `gulp build`.

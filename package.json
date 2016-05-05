@@ -1,5 +1,5 @@
 {
-  "name": "elseware",
+  "name": "EventReporter",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -24,18 +24,18 @@
     "passport-local-mongoose": "^3.1.0",
     "serve-favicon": "~2.3.0"
   },
-  "description": "projet nuit de l'info",
+  "description": "Projet Nuit de l'Info 2015",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/nsutter/Elseware.git"
+    "url": "git+ssh://git@github.com/ludovicm67/EventReporter.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nsutter/Elseware/issues"
+    "url": "https://github.com/ludovicm67/EventReporter/issues"
   },
-  "homepage": "https://github.com/nsutter/Elseware#readme",
+  "homepage": "https://github.com/ludovicm67/EventReporter#readme",
   "devDependencies": {
     "bootstrap-sass": "^3.3.6",
     "del": "^2.1.0",
