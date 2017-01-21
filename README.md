@@ -18,7 +18,14 @@ Ensuite faites en sorte que vous avez une commande `node`. Si ce n'est pas le ca
 
 Vérifiez ensuite également que vous avez bien une commande `gulp`. Si ce n'est pas le cas, lancez simplement la commande `sudo npm install -g gulp` pour l'installer globalement sur votre système.
 
-Une fois que vous avez tous ces prérequis, lancer un simple `npm install` (ou `yarn` si vous l'avez installé).
+Une fois que vous avez tous ces prérequis, lancer un simple `npm install` (ou `sudo yarn` si vous l'avez installé).
+
+Changez également l'url contenu dans `db.js` afin d'établir une connexion avec votre base de données MongoDB. Remplacez :
+ * `USER` par l'utilisateur,
+ * `PASSWORD` par le mor de passe,
+ * `HOST` par le nom d'hôte,
+ * `PORT` par le port utilisé (par defaut : 27017),
+ * `DATABASE` par le nom de votre base de données
 
 Ensuite il faudra lancer la commande `npm run-script build` ou bien tout simplement `gulp build` pour générer les fichiers manquants.
 
